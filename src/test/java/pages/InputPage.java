@@ -4,31 +4,24 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
-import static org.testng.Assert.assertFalse;
-import static org.testng.Assert.assertTrue;
-
 public class InputPage {
     WebDriver driver;
-    public final By inputnumber = By.xpath("//input[@type='number']");
+    private By inputNumber = By.xpath("//input[@type='number']");
 
     public InputPage(WebDriver driver) {
         this.driver = driver;
     }
-
-    public void enterNumber(Integer number) {
-        String value = String.valueOf(number);
-        driver.findElement(inputnumber).sendKeys(value);
+    public void open(){
+        driver.get("https://the-internet.herokuapp.com/inputs");
+    }
+    public void enterNumber(String number) {
+        driver.findElement(inputNumber).sendKeys(number);
     }
 
-    public String getText() {
-        return driver.findElement(inputnumber).getAttribute("value");
+    public String getInputText() {
+        return driver.findElement(inputNumber).getAttribute("value");
     }
-
-    public void click() {
-        driver.findElement(inputnumber).click();
-    }
-
-    public void enterKeys(Keys keys) {
-        driver.findElement(inputnumber).sendKeys(keys);
+    public void enterNumber(Keys keys) {
+        driver.findElement(inputNumber).sendKeys(keys);
     }
 }

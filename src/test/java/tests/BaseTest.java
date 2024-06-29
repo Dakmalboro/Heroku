@@ -1,3 +1,5 @@
+package tests;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -15,7 +17,6 @@ public class BaseTest {
     CheckboxPage checkboxPage;
     InputPage inputPage;
     TyposPage typosPage;
-    ;
 
     @BeforeMethod
     public void setUp() {
@@ -24,7 +25,9 @@ public class BaseTest {
         options.addArguments("start-maximized");
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.get("https://the-internet.herokuapp.com/");
+        typosPage = new TyposPage(driver);
+        inputPage = new InputPage(driver);
+        checkboxPage = new CheckboxPage(driver);
     }
 
     @AfterMethod

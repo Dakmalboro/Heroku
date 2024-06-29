@@ -2,7 +2,6 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 public class TyposPage {
     WebDriver driver;
@@ -12,12 +11,15 @@ public class TyposPage {
     public TyposPage(WebDriver driver) {
         this.driver = driver;
     }
-
-    public WebElement getParagraph1() {
-        return driver.findElement(paragraph1);
+    public void open(){
+        driver.get("https://the-internet.herokuapp.com/typos");
     }
 
-    public WebElement getParagraph2() {
-        return driver.findElement(paragraph2);
+    public String getParagraph1Text() {
+        return driver.findElement(paragraph1).getText();
+    }
+
+    public String getParagraph2Text() {
+        return driver.findElement(paragraph2).getText();
     }
 }
